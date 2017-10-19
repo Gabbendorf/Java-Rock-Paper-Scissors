@@ -10,7 +10,7 @@ public class TravisTest {
     }
 
     @Test
-    public void failingTest() {
-        assertEquals(1 + 1, 3);
+    public void passingTest2() {
+        assertEquals(1 + 1, 2);
     }
 }
