@@ -1,11 +1,15 @@
+package uiTest;
+
 import org.junit.Before;
 import org.junit.Test;
+import ui.Ui;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UiTest {
 
@@ -26,13 +30,13 @@ public class UiTest {
     }
 
     @Test
-    public void promptForMove() {
+    public void promptForMoveAndReturnsIt() {
         Ui ui = newUiWith("Paper");
 
-        ui.promptForMove();
+        String moveChosen = ui.promptForMove();
 
         assertTrue(output.toString().contains("Please type your move:"));
-        assertTrue(output.toString().contains("You played paper."));
+        assertEquals("paper", moveChosen);
     }
 
     @Test
@@ -42,6 +46,15 @@ public class UiTest {
         ui.promptForMove();
 
         assertTrue(output.toString().contains("Invalid move. Please type your move again:"));
+    }
+
+    @Test
+    public void printsMessageWithMoveChosen() {
+        Ui ui = newUiWith("input");
+
+        ui.confirmMove("paper");
+
+        assertTrue(output.toString().contains("You played paper."));
     }
 
     @Test

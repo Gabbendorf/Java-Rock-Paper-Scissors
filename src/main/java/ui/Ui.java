@@ -1,7 +1,9 @@
+package ui;
+
+import move.Moves;
+
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Ui {
@@ -18,13 +20,17 @@ public class Ui {
         output.println("*** Welcome to Rock-Paper-Scissors ***");
     }
 
-    public void promptForMove() {
+    public String promptForMove() {
         output.println("Please type your move:");
         String moveChosen = input.nextLine().toLowerCase();
         while (!isValidMove(moveChosen)) {
             output.println("Invalid move. Please type your move again:");
             moveChosen = input.nextLine().toLowerCase();
         }
+        return moveChosen;
+    }
+
+    public void confirmMove(String moveChosen) {
         output.println(String.format("You played %s.", moveChosen));
     }
 
@@ -41,7 +47,6 @@ public class Ui {
     }
 
     private boolean isValidMove(String moveChosen) {
-        List<String> validMoves = Arrays.asList("paper", "rock", "scissors");
-        return validMoves.contains(moveChosen);
+        return Moves.possibleMoves.contains(moveChosen);
     }
 }
