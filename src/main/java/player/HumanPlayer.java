@@ -18,6 +18,7 @@ public class HumanPlayer implements Player {
 
     public Move makeMove() {
         String move = ui.promptForMove();
+        ui.confirmMove(move);
         return moveFactory.newMove(move);
     }
 

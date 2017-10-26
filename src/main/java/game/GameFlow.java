@@ -13,17 +13,23 @@ public class GameFlow {
 
     public GameFlow(Ui ui, HumanPlayer humanPlayer, Computer computer) {
         this.ui = ui;
+        ui.welcomePlayer();
         this.humanPlayer = humanPlayer;
         this.computer = computer;
     }
 
     public void run() {
-        ui.welcomePlayer();
         Move userMove = humanPlayer.makeMove();
-        ui.confirmMove(userMove.getName());
+
         Move computerMove = computer.makeMove();
         ui.declareComputerMove(computerMove.getName());
+
         String verdict = userMove.playAgainst(computerMove);
+
+        printResult(verdict);
+    }
+
+    private void printResult(String verdict) {
         if (verdict.equals(Results.WON.value)) {
             ui.declareWinner(humanPlayer.name());
         } else if (verdict.equals(Results.LOST.value)) {

@@ -1,5 +1,6 @@
 package game;
 
+import org.junit.Before;
 import org.junit.Test;
 import player.FakeComputer;
 import player.HumanPlayer;
@@ -13,14 +14,16 @@ import static org.junit.Assert.assertTrue;
 
 public class GameFlowTest {
 
+    private ByteArrayOutputStream output;
+
+    @Before
+    public void setUp() throws Exception {
+        output = new ByteArrayOutputStream();
+    }
+
     @Test
     public void humanPlayerWins() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream outputStream = new PrintStream(output);
-        Ui ui = new Ui(outputStream, new ByteArrayInputStream("paper".getBytes()));
-        HumanPlayer humanPlayer = new HumanPlayer("Gabriella", ui);
-        FakeComputer fakeComputer = new FakeComputer("rock");
-        GameFlow gameFlow = new GameFlow(ui, humanPlayer, fakeComputer);
+        GameFlow gameFlow = generateGame("paper", "rock");
 
         gameFlow.run();
 
@@ -29,12 +32,7 @@ public class GameFlowTest {
 
     @Test
     public void computerWins() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream outputStream = new PrintStream(output);
-        Ui ui = new Ui(outputStream, new ByteArrayInputStream("paper".getBytes()));
-        HumanPlayer humanPlayer = new HumanPlayer("Gabriella", ui);
-        FakeComputer fakeComputer = new FakeComputer("scissors");
-        GameFlow gameFlow = new GameFlow(ui, humanPlayer, fakeComputer);
+        GameFlow gameFlow = generateGame("paper", "scissors");
 
         gameFlow.run();
 
@@ -43,15 +41,19 @@ public class GameFlowTest {
 
     @Test
     public void isDraw() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream outputStream = new PrintStream(output);
-        Ui ui = new Ui(outputStream, new ByteArrayInputStream("paper".getBytes()));
-        HumanPlayer humanPlayer = new HumanPlayer("Gabriella", ui);
-        FakeComputer fakeComputer = new FakeComputer("paper");
-        GameFlow gameFlow = new GameFlow(ui, humanPlayer, fakeComputer);
+        GameFlow gameFlow = generateGame("paper", "paper");
 
         gameFlow.run();
 
         assertTrue(output.toString().contains("It's a draw!"));
+    }
+
+    private GameFlow generateGame(String humanMove, String computerMove) {
+        PrintStream outputStream = new PrintStream(output);
+        Ui ui = new Ui(outputStream, new ByteArrayInputStream(humanMove.getBytes()));
+        HumanPlayer humanPlayer = new HumanPlayer("Gabriella", ui);
+        FakeComputer fakeComputer = new FakeComputer(computerMove);
+
+        return new GameFlow(ui, humanPlayer, fakeComputer);
     }
 }
