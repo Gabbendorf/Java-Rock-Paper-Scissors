@@ -1,5 +1,7 @@
 package move;
 
+import game.Results;
+
 public class Rock implements Move {
 
     private String name;
@@ -9,15 +11,13 @@ public class Rock implements Move {
     }
 
     public String playAgainst(Move opponentMove) {
-        StringBuilder verdict = new StringBuilder();
         if (opponentMove.getName() == "scissors") {
-            verdict.append("won");
+            return Results.WON.value;
         } else if (opponentMove.getName() == "paper"){
-            verdict.append("lost");
+            return Results.LOST.value;
         } else {
-            verdict.append("draw");
+            return Results.DRAW.value;
         }
-        return verdict.toString();
     }
 
     public String getName() {

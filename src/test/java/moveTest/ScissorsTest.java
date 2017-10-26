@@ -1,5 +1,6 @@
 package moveTest;
 
+import game.Results;
 import move.Paper;
 import move.Rock;
 import move.Scissors;
@@ -13,20 +14,26 @@ public class ScissorsTest {
     public void winsAgainstPaper() {
         Scissors scissors = new Scissors("scissors");
 
-        assertEquals("won", scissors.playAgainst(new Paper("paper")));
+        String winnerValue = Results.WON.value;
+
+        assertEquals(winnerValue, scissors.playAgainst(new Paper("paper")));
     }
 
     @Test
     public void losesAgainstRock() {
         Scissors scissors = new Scissors("scissors");
 
-        assertEquals("lost", scissors.playAgainst(new Rock("rock")));
+        String loserValue = Results.LOST.value;
+
+        assertEquals(loserValue, scissors.playAgainst(new Rock("rock")));
     }
 
     @Test
     public void isDrawAgainstScissors() {
         Scissors scissors = new Scissors("scissors");
 
-        assertEquals("draw", scissors.playAgainst(new Scissors("scissors")));
+        String drawValue = Results.DRAW.value;
+
+        assertEquals(drawValue, scissors.playAgainst(new Scissors("scissors")));
     }
 }
