@@ -23,4 +23,7 @@ public class Computer implements Player {
         return moveFactory.newMove(randomMove);
     }
 
+    public String name() {
+        return name;
+    }
 }

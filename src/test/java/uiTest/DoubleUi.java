@@ -9,7 +9,6 @@ import java.io.PrintStream;
 
 public class DoubleUi extends Ui {
 
-
     public DoubleUi(PrintStream output, InputStream input) {
         super(new PrintStream(new ByteArrayOutputStream()), new ByteArrayInputStream("".getBytes()));
     }

@@ -20,4 +20,8 @@ public class HumanPlayer implements Player {
         String move = ui.promptForMove();
         return moveFactory.newMove(move);
     }
+
+    public String name() {
+        return name;
+    }
 }

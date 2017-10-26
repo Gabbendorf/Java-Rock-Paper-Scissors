@@ -11,9 +11,9 @@ public class Scissors implements Move {
     }
 
     public String playAgainst(Move opponentMove) {
-        if (opponentMove.getName() == "paper") {
+        if (opponentMove.getName().equals("paper")) {
             return Results.WON.value;
-        } else if (opponentMove.getName() == "rock"){
+        } else if (opponentMove.getName().equals("rock")){
             return Results.LOST.value;
         } else {
             return Results.DRAW.value;

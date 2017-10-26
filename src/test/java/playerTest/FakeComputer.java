@@ -1,7 +1,20 @@
-Unstaged changes after reset:
-M	src/main/java/game/GameFlow.java
-M	src/main/java/player/Computer.java
-D	src/main/java/player/FakeComputer.java
-M	src/main/java/player/HumanPlayer.java
-M	src/test/java/playerTest/FakeComputer.java
-M	src/test/java/uiTest/DoubleUi.java
+package player;
+
+import move.Move;
+import move.MoveFactory;
+
+public class FakeComputer extends Computer {
+
+    private String move;
+    private MoveFactory moveFactory;
+
+    public FakeComputer(String move) {
+       this.move = move;
+       moveFactory = new MoveFactory();
+    }
+
+    @Override
+    public Move makeMove() {
+        return moveFactory.newMove(move);
+    }
+}
