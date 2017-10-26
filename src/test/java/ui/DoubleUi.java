@@ -1,6 +1,4 @@
-package uiTest;
-
-import ui.Ui;
+package ui;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

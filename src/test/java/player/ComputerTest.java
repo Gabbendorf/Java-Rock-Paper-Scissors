@@ -1,8 +1,7 @@
-package playerTest;
+package player;
 
 import move.Moves;
 import org.junit.Test;
-import player.Computer;
 
 import static org.junit.Assert.assertTrue;
 

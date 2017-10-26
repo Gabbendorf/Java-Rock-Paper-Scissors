@@ -1,9 +1,6 @@
-package moveTest;
+package move;
 
 import game.Results;
-import move.Paper;
-import move.Rock;
-import move.Scissors;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

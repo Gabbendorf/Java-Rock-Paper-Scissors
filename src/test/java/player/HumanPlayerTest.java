@@ -1,9 +1,8 @@
-package playerTest;
+package player;
 
 import move.Paper;
 import org.junit.Test;
-import player.HumanPlayer;
-import uiTest.DoubleUi;
+import ui.DoubleUi;
 
 import static org.junit.Assert.assertTrue;
 

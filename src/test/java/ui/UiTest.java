@@ -1,8 +1,7 @@
-package uiTest;
+package ui;
 
 import org.junit.Before;
 import org.junit.Test;
-import ui.Ui;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

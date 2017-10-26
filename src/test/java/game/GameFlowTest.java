@@ -1,6 +1,5 @@
-package gameTest;
+package game;
 
-import game.GameFlow;
 import org.junit.Test;
 import player.FakeComputer;
 import player.HumanPlayer;
