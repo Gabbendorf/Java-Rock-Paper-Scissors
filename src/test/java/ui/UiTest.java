@@ -29,6 +29,16 @@ public class UiTest {
     }
 
     @Test
+    public void askForName() {
+        Ui ui = newUiWith("Gabriella");
+
+        String userName = ui.askForName();
+
+        assertTrue(output.toString().contains("Please type your name:"));
+        assertEquals("Gabriella", userName);
+    }
+
+    @Test
     public void promptForMoveAndReturnsIt() {
         Ui ui = newUiWith("Paper");
 
@@ -51,9 +61,9 @@ public class UiTest {
     public void printsMessageWithMoveChosen() {
         Ui ui = newUiWith("input");
 
-        ui.confirmMove("paper");
+        ui.confirmMove("Gabriella", "paper");
 
-        assertTrue(output.toString().contains("You played paper."));
+        assertTrue(output.toString().contains("Gabriella played paper."));
     }
 
     @Test

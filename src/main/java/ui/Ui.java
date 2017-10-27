@@ -22,6 +22,11 @@ public class Ui {
         output.println("*** Welcome to Rock-Paper-Scissors ***");
     }
 
+    public String askForName() {
+        output.println("Please type your name:");
+        return input.nextLine();
+    }
+
     public String promptForMove() {
         output.println("Please type your move:");
         String moveChosen = input.nextLine().toLowerCase();
@@ -32,8 +37,8 @@ public class Ui {
         return moveChosen;
     }
 
-    public void confirmMove(String moveChosen) {
-        output.println(String.format("You played %s.", moveChosen));
+    public void confirmMove(String userName, String moveChosen)  {
+        output.println(String.format("%s played %s.", userName, moveChosen));
     }
 
     public void declareComputerMove(String computerMove) {

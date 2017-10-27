@@ -8,13 +8,13 @@ import ui.Ui;
 public class GameFlow {
 
     private final Ui ui;
-    private final HumanPlayer humanPlayer;
+    private HumanPlayer humanPlayer;
     private final Computer computer;
 
-    public GameFlow(Ui ui, HumanPlayer humanPlayer, Computer computer) {
+    public GameFlow(Ui ui, Computer computer) {
         this.ui = ui;
         ui.welcomePlayer();
-        this.humanPlayer = humanPlayer;
+        this.humanPlayer = createNewPlayer();
         this.computer = computer;
     }
 
@@ -27,10 +27,19 @@ public class GameFlow {
         printResult(userMove.playAgainst(computerMove));
 
         if (ui.playAgain().equals("yes")) {
-            run();
+            startNewGame();
         } else {
             ui.sayBye();
         }
+    }
+
+    private void startNewGame() {
+        humanPlayer = createNewPlayer();
+        run();
+    }
+
+    private HumanPlayer createNewPlayer() {
+        return new HumanPlayer(ui.askForName(), ui);
     }
 
     private void printResult(String verdict) {

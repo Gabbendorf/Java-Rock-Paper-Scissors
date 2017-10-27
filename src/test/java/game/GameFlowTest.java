@@ -3,7 +3,6 @@ package game;
 import org.junit.Before;
 import org.junit.Test;
 import player.FakeComputer;
-import player.HumanPlayer;
 import ui.Ui;
 
 import java.io.ByteArrayInputStream;
@@ -23,7 +22,7 @@ public class GameFlowTest {
 
     @Test
     public void humanPlayerWins() {
-        GameFlow gameFlow = generateGame("paper\nno", "rock");
+        GameFlow gameFlow = generateGame("Gabriella\npaper\nno", "rock");
 
         gameFlow.run();
 
@@ -32,7 +31,7 @@ public class GameFlowTest {
 
     @Test
     public void computerWins() {
-        GameFlow gameFlow = generateGame("paper\nno", "scissors");
+        GameFlow gameFlow = generateGame("Gabriella\npaper\nno", "scissors");
 
         gameFlow.run();
 
@@ -41,7 +40,7 @@ public class GameFlowTest {
 
     @Test
     public void isDraw() {
-        GameFlow gameFlow = generateGame("paper\nno", "paper");
+        GameFlow gameFlow = generateGame("Gabriella\npaper\nno", "paper");
 
         gameFlow.run();
 
@@ -50,7 +49,7 @@ public class GameFlowTest {
 
     @Test
     public void startsSecondGameThatIsDraw() {
-        GameFlow gameFlow = generateGame("paper\nyes\nrock\nno", "rock");
+        GameFlow gameFlow = generateGame("Gabriella\npaper\nyes\nGabi\nrock\nno", "rock");
 
         gameFlow.run();
 
@@ -60,9 +59,8 @@ public class GameFlowTest {
     private GameFlow generateGame(String playerInput, String computerMove) {
         PrintStream outputStream = new PrintStream(output);
         Ui ui = new Ui(outputStream, new ByteArrayInputStream(playerInput.getBytes()));
-        HumanPlayer humanPlayer = new HumanPlayer("Gabriella", ui);
         FakeComputer fakeComputer = new FakeComputer(computerMove);
 
-        return new GameFlow(ui, humanPlayer, fakeComputer);
+        return new GameFlow(ui, fakeComputer);
     }
 }
