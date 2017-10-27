@@ -23,7 +23,7 @@ public class GameFlowTest {
 
     @Test
     public void humanPlayerWins() {
-        GameFlow gameFlow = generateGame("paper", "rock");
+        GameFlow gameFlow = generateGame("paper\nno", "rock");
 
         gameFlow.run();
 
@@ -32,7 +32,7 @@ public class GameFlowTest {
 
     @Test
     public void computerWins() {
-        GameFlow gameFlow = generateGame("paper", "scissors");
+        GameFlow gameFlow = generateGame("paper\nno", "scissors");
 
         gameFlow.run();
 
@@ -41,16 +41,25 @@ public class GameFlowTest {
 
     @Test
     public void isDraw() {
-        GameFlow gameFlow = generateGame("paper", "paper");
+        GameFlow gameFlow = generateGame("paper\nno", "paper");
 
         gameFlow.run();
 
         assertTrue(output.toString().contains("It's a draw!"));
     }
 
-    private GameFlow generateGame(String humanMove, String computerMove) {
+    @Test
+    public void startsSecondGameThatIsDraw() {
+        GameFlow gameFlow = generateGame("paper\nyes\nrock\nno", "rock");
+
+        gameFlow.run();
+
+        assertTrue(output.toString().contains("It's a draw!"));
+    }
+
+    private GameFlow generateGame(String playerInput, String computerMove) {
         PrintStream outputStream = new PrintStream(output);
-        Ui ui = new Ui(outputStream, new ByteArrayInputStream(humanMove.getBytes()));
+        Ui ui = new Ui(outputStream, new ByteArrayInputStream(playerInput.getBytes()));
         HumanPlayer humanPlayer = new HumanPlayer("Gabriella", ui);
         FakeComputer fakeComputer = new FakeComputer(computerMove);
 

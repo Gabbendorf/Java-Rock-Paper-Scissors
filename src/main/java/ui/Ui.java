@@ -4,6 +4,8 @@ import move.Moves;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Ui {
@@ -46,7 +48,27 @@ public class Ui {
         output.println("It's a draw!");
     }
 
+    public String playAgain() {
+        output.println("Do you want to play again?");
+        String answer = input.nextLine().toLowerCase();
+        while (!isValidAnswer(answer)) {
+            output.println("I didn't understand: yes or no?");
+            answer = input.nextLine().toLowerCase();
+        }
+        return answer;
+    }
+
+    public void sayBye() {
+        output.println("Bye bye!");
+    }
+
+    private boolean isValidAnswer(String answer) {
+        List<String> validAnswers = Arrays.asList("yes", "no");
+        return validAnswers.contains(answer);
+    }
+
     private boolean isValidMove(String moveChosen) {
         return Moves.possibleMoves.contains(moveChosen);
     }
+
 }

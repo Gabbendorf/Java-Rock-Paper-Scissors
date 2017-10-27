@@ -83,6 +83,35 @@ public class UiTest {
         assertTrue(output.toString().contains("It's a draw!"));
     }
 
+    @Test
+    public void askToPlayAgain() {
+        Ui ui = newUiWith("yes");
+
+        String answer = ui.playAgain();
+
+        assertTrue(output.toString().contains("Do you want to play again?"));
+        assertEquals("yes", answer);
+    }
+
+    @Test
+    public void askToRepeatForNewGame() {
+        Ui ui = newUiWith("maybe\nno");
+
+        String answer = ui.playAgain();
+
+        assertTrue(output.toString().contains("I didn't understand: yes or no?"));
+        assertEquals("no", answer);
+    }
+
+    @Test
+    public void sayGoodbye() {
+        Ui ui = newUiWith("input");
+
+        ui.sayBye();
+
+        assertTrue(output.toString().contains("Bye bye!"));
+    }
+
     private Ui newUiWith(String inputString) {
         ByteArrayInputStream input = new ByteArrayInputStream(inputString.getBytes());
 

@@ -24,9 +24,13 @@ public class GameFlow {
         Move computerMove = computer.makeMove();
         ui.declareComputerMove(computerMove.getName());
 
-        String verdict = userMove.playAgainst(computerMove);
+        printResult(userMove.playAgainst(computerMove));
 
-        printResult(verdict);
+        if (ui.playAgain().equals("yes")) {
+            run();
+        } else {
+            ui.sayBye();
+        }
     }
 
     private void printResult(String verdict) {

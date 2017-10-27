@@ -11,8 +11,8 @@ public class HumanPlayer implements Player {
     private String name;
 
     public HumanPlayer(String name, Ui ui) {
-        this.name = name;
         this.ui = ui;
+        this.name = name;
         moveFactory = new MoveFactory();
     }
 
