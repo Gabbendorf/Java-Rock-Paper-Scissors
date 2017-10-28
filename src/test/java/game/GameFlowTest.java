@@ -3,6 +3,7 @@ package game;
 import org.junit.Before;
 import org.junit.Test;
 import player.FakeComputer;
+import language.English;
 import ui.Ui;
 
 import java.io.ByteArrayInputStream;
@@ -22,7 +23,7 @@ public class GameFlowTest {
 
     @Test
     public void humanPlayerWins() {
-        GameFlow gameFlow = generateGame("Gabriella\npaper\nno", "rock");
+        GameFlow gameFlow = generateGame("English\nGabriella\npaper\nno", "rock");
 
         gameFlow.run();
 
@@ -31,7 +32,7 @@ public class GameFlowTest {
 
     @Test
     public void computerWins() {
-        GameFlow gameFlow = generateGame("Gabriella\npaper\nno", "scissors");
+        GameFlow gameFlow = generateGame("English\nGabriella\npaper\nno", "scissors");
 
         gameFlow.run();
 
@@ -40,7 +41,7 @@ public class GameFlowTest {
 
     @Test
     public void isDraw() {
-        GameFlow gameFlow = generateGame("Gabriella\npaper\nno", "paper");
+        GameFlow gameFlow = generateGame("English\nGabriella\npaper\nno", "paper");
 
         gameFlow.run();
 
@@ -49,16 +50,25 @@ public class GameFlowTest {
 
     @Test
     public void startsSecondGameThatIsDraw() {
-        GameFlow gameFlow = generateGame("Gabriella\npaper\nyes\nGabi\nrock\nno", "rock");
+        GameFlow gameFlow = generateGame("English\nGabriella\npaper\nyes\nEnglish\nGabi\nrock\nno", "rock");
 
         gameFlow.run();
 
         assertTrue(output.toString().contains("It's a draw!"));
     }
 
+    @Test
+    public void startsGameInItalian() {
+        GameFlow gameFlow = generateGame("italiano\nGabi\ncarta\nno", "rock");
+
+        gameFlow.run();
+
+        assertTrue(output.toString().contains("Gabi ha vinto!"));
+    }
+
     private GameFlow generateGame(String playerInput, String computerMove) {
         PrintStream outputStream = new PrintStream(output);
-        Ui ui = new Ui(outputStream, new ByteArrayInputStream(playerInput.getBytes()));
+        Ui ui = new Ui(outputStream, new ByteArrayInputStream(playerInput.getBytes()), new English());
         FakeComputer fakeComputer = new FakeComputer(computerMove);
 
         return new GameFlow(ui, fakeComputer);

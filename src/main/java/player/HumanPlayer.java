@@ -7,16 +7,14 @@ import ui.Ui;
 public class HumanPlayer implements Player {
 
     private final MoveFactory moveFactory;
-    private final Ui ui;
     private String name;
 
-    public HumanPlayer(String name, Ui ui) {
-        this.ui = ui;
+    public HumanPlayer(String name) {
         this.name = name;
         moveFactory = new MoveFactory();
     }
 
-    public Move makeMove() {
+    public Move makeMove(Ui ui) {
         String move = ui.promptForMove();
         ui.confirmMove(name, move);
         return moveFactory.newMove(move);

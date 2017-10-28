@@ -3,11 +3,17 @@ package move;
 import java.util.Arrays;
 import java.util.List;
 
-public class Moves {
+public enum Moves {
 
-    public static final List<String> possibleMoves;
+    ROCK("rock"), PAPER("paper"), SCISSORS("scissors");
 
-    static {
-        possibleMoves = Arrays.asList("rock", "paper", "scissors");
+    public String name;
+
+    Moves(String name) {
+        this.name = name;
+    }
+
+    static public List possibleMoves() {
+        return Arrays.asList(ROCK.name, PAPER.name, SCISSORS.name);
     }
 }

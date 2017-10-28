@@ -11,9 +11,9 @@ public class Paper implements Move {
     }
 
     public String playAgainst(Move opponentMove) {
-        if (opponentMove.getName().equals("rock")) {
+        if (opponentMove.getName().equals(Moves.ROCK.name)) {
             return Results.WON.value;
-        } else if (opponentMove.getName().equals("scissors")) {
+        } else if (opponentMove.getName().equals(Moves.SCISSORS.name)) {
             return Results.LOST.value;
         } else {
             return Results.DRAW.value;

@@ -2,6 +2,7 @@ package player;
 
 import move.Move;
 import move.MoveFactory;
+import ui.Ui;
 
 public class FakeComputer extends Computer {
 
@@ -14,7 +15,7 @@ public class FakeComputer extends Computer {
     }
 
     @Override
-    public Move makeMove() {
+    public Move makeMove(Ui ui) {
         return moveFactory.newMove(move);
     }
 }

@@ -11,9 +11,9 @@ public class Rock implements Move {
     }
 
     public String playAgainst(Move opponentMove) {
-        if (opponentMove.getName().equals("scissors")) {
+        if (opponentMove.getName().equals(Moves.SCISSORS.name)) {
             return Results.WON.value;
-        } else if (opponentMove.getName().equals("paper")){
+        } else if (opponentMove.getName().equals(Moves.PAPER.name)){
             return Results.LOST.value;
         } else {
             return Results.DRAW.value;

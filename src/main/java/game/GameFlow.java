@@ -13,33 +13,27 @@ public class GameFlow {
 
     public GameFlow(Ui ui, Computer computer) {
         this.ui = ui;
-        ui.welcomePlayer();
-        this.humanPlayer = createNewPlayer();
         this.computer = computer;
+        gameSetUp();
     }
 
     public void run() {
-        Move userMove = humanPlayer.makeMove();
+        Move userMove = humanPlayer.makeMove(ui);
 
-        Move computerMove = computer.makeMove();
-        ui.declareComputerMove(computerMove.getName());
+        Move computerMove = computer.makeMove(ui);
 
         printResult(userMove.playAgainst(computerMove));
 
         if (ui.playAgain().equals("yes")) {
-            startNewGame();
+            gameSetUp();
+            run();
         } else {
             ui.sayBye();
         }
     }
 
-    private void startNewGame() {
-        humanPlayer = createNewPlayer();
-        run();
-    }
-
     private HumanPlayer createNewPlayer() {
-        return new HumanPlayer(ui.askForName(), ui);
+        return new HumanPlayer(ui.askForName());
     }
 
     private void printResult(String verdict) {
@@ -50,5 +44,11 @@ public class GameFlow {
         } else {
             ui.declareDraw();
         }
+    }
+
+    private void gameSetUp() {
+        ui.askForLanguage();
+        ui.welcomePlayer();
+        humanPlayer = createNewPlayer();
     }
 }

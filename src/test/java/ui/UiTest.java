@@ -1,5 +1,6 @@
 package ui;
 
+import language.English;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +18,16 @@ public class UiTest {
     @Before
     public void setUp() {
         output = new ByteArrayOutputStream();
+    }
+
+    @Test
+    public void askToChooseLanguage() {
+        Ui ui = newUiWith("english");
+
+        ui.askForLanguage();
+
+        assertTrue(output.toString().contains("Please choose a language:"));
+        assertTrue(output.toString().contains("English/italiano"));
     }
 
     @Test
@@ -125,6 +136,6 @@ public class UiTest {
     private Ui newUiWith(String inputString) {
         ByteArrayInputStream input = new ByteArrayInputStream(inputString.getBytes());
 
-        return new Ui(new PrintStream(output), input);
+        return new Ui(new PrintStream(output), input, new English());
     }
 }
