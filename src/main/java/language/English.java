@@ -17,7 +17,7 @@ public class English implements Language {
     }
 
     public String moveMessage() {
-        return "Please type your move:";
+        return "Please type your move (rock/paper/scissors):";
     }
 
     public String translateIntoValidMove(String chosenMove) {
@@ -25,7 +25,7 @@ public class English implements Language {
     }
 
     public String repeatMoveMessage() {
-        return "Invalid move. Please type your move again:";
+        return "Invalid move. Please type your move again (rock/paper/scissors):";
     }
 
     public String movePlayedMessage(String userName, String moveChosen) {

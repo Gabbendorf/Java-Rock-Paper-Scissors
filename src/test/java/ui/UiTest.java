@@ -26,7 +26,7 @@ public class UiTest {
 
         ui.askForLanguage();
 
-        assertTrue(output.toString().contains("Please choose a language:"));
+        assertTrue(output.toString().contains("Please choose a language/scegli una lingua:"));
         assertTrue(output.toString().contains("English/italiano"));
     }
 
@@ -55,7 +55,7 @@ public class UiTest {
 
         String moveChosen = ui.promptForMove();
 
-        assertTrue(output.toString().contains("Please type your move:"));
+        assertTrue(output.toString().contains("Please type your move (rock/paper/scissors):"));
         assertEquals("paper", moveChosen);
     }
 
@@ -65,7 +65,7 @@ public class UiTest {
 
         ui.promptForMove();
 
-        assertTrue(output.toString().contains("Invalid move. Please type your move again:"));
+        assertTrue(output.toString().contains("Invalid move. Please type your move again (rock/paper/scissors):"));
     }
 
     @Test

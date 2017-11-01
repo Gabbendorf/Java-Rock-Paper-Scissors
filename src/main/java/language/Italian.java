@@ -36,7 +36,7 @@ public class Italian implements Language {
     }
 
     public String moveMessage() {
-        return "Fai la tua mossa:";
+        return "Fai la tua mossa (carta/forbici/sasso):";
     }
 
     public String translateIntoValidMove(String chosenMove) {
@@ -44,7 +44,7 @@ public class Italian implements Language {
     }
 
     public String repeatMoveMessage() {
-        return "Non ho capito, ripeti la mossa:";
+        return "Non ho capito, ripeti la mossa (carta/forbici/sasso):";
     }
 
     public String movePlayedMessage(String userName, String moveChosen) {

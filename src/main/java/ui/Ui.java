@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Ui {
 
-    final static private String NEWLINE = "";
+    final static private String EMPTYLINE = "";
     private Language language;
     private PrintStream output;
     private Scanner input;
@@ -25,7 +25,7 @@ public class Ui {
     }
 
     public void askForLanguage() {
-        output.println("Please choose a language:");
+        output.println("Please choose a language/scegli una lingua:");
         output.println("English/italiano");
         String languageChosen = input.nextLine().toLowerCase();
         while (!isValidLanguage(languageChosen)) {
@@ -33,13 +33,13 @@ public class Ui {
             output.println("English/italiano");
             languageChosen = input.nextLine().toLowerCase();
         }
-        output.println(NEWLINE);
+        output.println(EMPTYLINE);
         language = new LanguageFactory().newLanguage(languageChosen);
     }
 
     public void welcomePlayer() {
         output.println(language.welcomeMessage());
-        output.println(NEWLINE);
+        output.println(EMPTYLINE);
     }
 
     public String askForName() {
@@ -63,7 +63,7 @@ public class Ui {
 
     public void declareComputerMove(String computerMove) {
        output.println(language.computerMoveMessage(computerMove));
-       output.println(NEWLINE);
+       output.println(EMPTYLINE);
     }
 
     public void declareWinner(String winnerName) {
