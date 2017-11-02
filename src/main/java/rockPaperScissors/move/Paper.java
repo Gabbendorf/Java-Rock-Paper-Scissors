@@ -1,5 +1,4 @@
 package rockPaperScissors.move;
-
 import rockPaperScissors.game.Results;
 
 public class Paper implements Move {

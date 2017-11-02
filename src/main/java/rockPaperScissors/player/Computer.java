@@ -5,9 +5,6 @@ import rockPaperScissors.move.MoveFactory;
 import rockPaperScissors.move.Moves;
 import rockPaperScissors.ui.Ui;
 
-import java.util.List;
-import java.util.Random;
-
 public class Computer implements Player {
 
     private final MoveFactory moveFactory;
@@ -19,10 +16,8 @@ public class Computer implements Player {
     }
 
     public Move makeMove(Ui ui) {
-        List<String> possibleMovesMoves = Moves.possibleMoves();
-        String randomMove = possibleMovesMoves.get(new Random().nextInt(possibleMovesMoves.size()));
-        ui.declareComputerMove(randomMove);
-        return moveFactory.newMove(randomMove);
+        ui.declareComputerMove(Moves.randomMove());
+        return moveFactory.newMove(Moves.randomMove());
     }
 
     public String name() {

@@ -2,6 +2,7 @@ package rockPaperScissors.move;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public enum Moves {
 
@@ -13,7 +14,12 @@ public enum Moves {
         this.name = name;
     }
 
-    static public List possibleMoves() {
+    static public List<String> possibleMoves() {
         return Arrays.asList(ROCK.name, PAPER.name, SCISSORS.name);
+    }
+
+    static public String randomMove() {
+        List<String> possibleMoves = possibleMoves();
+        return possibleMoves.get(new Random().nextInt(possibleMoves.size()));
     }
 }
