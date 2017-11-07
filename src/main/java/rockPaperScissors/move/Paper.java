@@ -1,6 +1,8 @@
 package rockPaperScissors.move;
 import rockPaperScissors.game.Results;
 
+import static rockPaperScissors.move.Moves.*;
+
 public class Paper implements Move {
 
     private String name;
@@ -10,9 +12,9 @@ public class Paper implements Move {
     }
 
     public String playAgainst(Move opponentMove) {
-        if (opponentMove.getName().equals(Moves.ROCK.name)) {
+        if (opponentMove.getName().equals(ROCK.name)) {
             return Results.WON.value;
-        } else if (opponentMove.getName().equals(Moves.SCISSORS.name)) {
+        } else if (opponentMove.getName().equals(SCISSORS.name)) {
             return Results.LOST.value;
         } else {
             return Results.DRAW.value;
