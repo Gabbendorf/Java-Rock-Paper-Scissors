@@ -4,7 +4,7 @@ import rockPaperScissors.language.English;
 import rockPaperScissors.language.Language;
 import rockPaperScissors.language.LanguageFactory;
 import rockPaperScissors.language.Languages;
-import rockPaperScissors.move.Moves;
+import rockPaperScissors.move.Move;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -94,7 +94,7 @@ public class Ui {
     }
 
     private boolean isValidMove(String moveChosen) {
-        return Moves.possibleMoves().contains(moveChosen);
+        return Move.possibleMoves().contains(moveChosen);
     }
 
     private boolean isValidAnswer(String answer) {

@@ -1,16 +1,16 @@
 package rockPaperScissors.move;
 
-import static rockPaperScissors.move.Moves.*;
+import static rockPaperScissors.move.Move.*;
 
 public class MoveFactory {
 
     public Move newMove(String moveChosen) {
        if (moveChosen.equals(ROCK.name)) {
-           return new Rock(moveChosen);
+           return Move.ROCK;
        } else if (moveChosen.equals(PAPER.name)) {
-           return new Paper(moveChosen);
+           return Move.PAPER;
        } else {
-           return new Scissors(moveChosen);
+           return Move.SCISSORS;
        }
     }
 }

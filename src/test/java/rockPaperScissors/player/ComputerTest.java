@@ -1,7 +1,7 @@
 package rockPaperScissors.player;
 
 import org.junit.Test;
-import rockPaperScissors.move.Moves;
+import rockPaperScissors.move.Move;
 import rockPaperScissors.ui.Ui;
 
 import java.io.ByteArrayInputStream;
@@ -17,9 +17,9 @@ public class ComputerTest {
         Ui ui = new Ui(new PrintStream(new ByteArrayOutputStream()), new ByteArrayInputStream("".getBytes()));
         Computer computer = new Computer();
 
-        String move = computer.makeMove(ui).getName();
+        String moves = computer.makeMove(ui).name;
 
-        assertTrue(Moves.possibleMoves().contains(move));
+        assertTrue(Move.possibleMoves().contains(moves));
     }
 
 }

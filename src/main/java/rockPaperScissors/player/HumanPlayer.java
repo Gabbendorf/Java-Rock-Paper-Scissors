@@ -1,7 +1,7 @@
 package rockPaperScissors.player;
 
-import rockPaperScissors.move.Move;
 import rockPaperScissors.move.MoveFactory;
+import rockPaperScissors.move.Move;
 import rockPaperScissors.ui.Ui;
 
 public class HumanPlayer implements Player {

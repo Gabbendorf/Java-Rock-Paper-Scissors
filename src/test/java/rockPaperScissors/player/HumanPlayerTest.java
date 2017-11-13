@@ -1,11 +1,11 @@
 package rockPaperScissors.player;
 
-import rockPaperScissors.move.Paper;
 import org.junit.Test;
-import rockPaperScissors.ui.DoubleUi;
 import rockPaperScissors.language.English;
+import rockPaperScissors.ui.DoubleUi;
 
 import static org.junit.Assert.assertTrue;
+import static rockPaperScissors.move.Move.PAPER;
 
 public class HumanPlayerTest {
 
@@ -14,6 +14,6 @@ public class HumanPlayerTest {
        DoubleUi doubleUi = new DoubleUi(null, null, new English());
        HumanPlayer humanPlayer = new HumanPlayer("Gabriella");
 
-       assertTrue(humanPlayer.makeMove(doubleUi) instanceof Paper);
+       assertTrue(humanPlayer.makeMove(doubleUi) == PAPER);
    }
 }

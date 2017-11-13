@@ -1,6 +1,6 @@
 package rockPaperScissors.language;
 
-import rockPaperScissors.move.Moves;
+import rockPaperScissors.move.Move;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,12 +11,12 @@ public class Italian implements Language {
 
     public Italian() {
         translator = new HashMap<>();
-        translator.put("sasso", Moves.ROCK.name);
-        translator.put("carta", Moves.PAPER.name);
-        translator.put("forbici", Moves.SCISSORS.name);
-        translator.put(Moves.ROCK.name, "sasso");
-        translator.put(Moves.PAPER.name, "carta");
-        translator.put(Moves.SCISSORS.name, "forbici");
+        translator.put("sasso", Move.ROCK.name);
+        translator.put("carta", Move.PAPER.name);
+        translator.put("forbici", Move.SCISSORS.name);
+        translator.put(Move.ROCK.name, "sasso");
+        translator.put(Move.PAPER.name, "carta");
+        translator.put(Move.SCISSORS.name, "forbici");
         translator.put("si", "yes");
         translator.put("no", "no");
     }

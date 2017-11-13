@@ -1,10 +1,10 @@
 package rockPaperScissors.game;
 
-public enum Results {
+public enum Result {
 
     WON("won"), LOST("lost"), DRAW("draw");
 
-    Results(String message) {
+    Result(String message) {
         value = message;
     }
 

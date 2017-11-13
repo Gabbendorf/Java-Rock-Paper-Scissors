@@ -5,7 +5,8 @@ import rockPaperScissors.player.Computer;
 import rockPaperScissors.player.HumanPlayer;
 import rockPaperScissors.ui.Ui;
 
-import static rockPaperScissors.game.Results.*;
+import static rockPaperScissors.game.Result.LOST;
+import static rockPaperScissors.game.Result.WON;
 
 public class GameFlow {
 
@@ -36,10 +37,10 @@ public class GameFlow {
         return new HumanPlayer(ui.askForName());
     }
 
-    private void printResult(String verdict) {
-        if (verdict.equals(WON.value)) {
+    private void printResult(Result verdict) {
+        if (verdict == WON) {
             ui.declareWinner(humanPlayer.name());
-        } else if (verdict.equals(LOST.value)) {
+        } else if (verdict == LOST) {
             ui.declareWinner(computer.name());
         } else {
             ui.declareDraw();

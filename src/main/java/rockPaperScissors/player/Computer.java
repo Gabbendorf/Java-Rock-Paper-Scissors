@@ -1,8 +1,7 @@
 package rockPaperScissors.player;
 
-import rockPaperScissors.move.Move;
 import rockPaperScissors.move.MoveFactory;
-import rockPaperScissors.move.Moves;
+import rockPaperScissors.move.Move;
 import rockPaperScissors.ui.Ui;
 
 public class Computer implements Player {
@@ -16,8 +15,8 @@ public class Computer implements Player {
     }
 
     public Move makeMove(Ui ui) {
-        ui.declareComputerMove(Moves.randomMove());
-        return moveFactory.newMove(Moves.randomMove());
+        ui.declareComputerMove(Move.randomMove());
+        return moveFactory.newMove(Move.randomMove());
     }
 
     public String name() {
